@@ -12,6 +12,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -46,36 +47,25 @@ public class PrintsAPI {
         return isAvailable;
     }
 
-    public JSONObject getPetitions(){
+    public Call getPetitions(){
 
-        if(isNetworkAvailable()){
+        if(isNetworkAvailable()) {
 
             //create url for the getPetitions request
             //structure: /v1/petitions?key={key}&limit={limit}
-            String petitionsURL=mPawPrintsURL + "/v1/petitions?key=" + mApiKey;
+            String petitionsURL = mPawPrintsURL + "/v1/petitions?key=" + mApiKey;
+
+            Log.d(TAG,"Petitions URL: " + petitionsURL);
 
             //create http client
-            OkHttpClient client=new OkHttpClient();
-            Request petitionsRequest=new Request.Builder().url(petitionsURL).build();
+            OkHttpClient client = new OkHttpClient();
+            Request petitionsRequest = new Request.Builder().url(petitionsURL).build();
 
             Call call=client.newCall(petitionsRequest);
-            call.enqueue(new Callback() {
-                @Override
-                public void onFailure(Request request, IOException e) {
-                    //failure state for request
-                    Log.d(TAG,"There was an unsuccessful request made to the api");
-                }
 
-                @Override
-                public void onResponse(Response response) throws IOException {
-                    //success state for request
-                    Log.d(TAG, response.toString());
-                }
-            });
+            return call;
         }else{
-            Toast.makeText(mContext,"network is unavailable",Toast.LENGTH_LONG).show();
+            return null;
         }
-        return new JSONObject();
     }
-
 }
