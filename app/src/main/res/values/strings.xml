@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Paw Prints</string>
+
+    <string name="empty_petitions_text">There are no petitions</string>
+
+</resources>
