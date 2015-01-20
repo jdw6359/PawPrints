@@ -2,6 +2,7 @@ package woodward.joshua.pawprints.UI;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +36,8 @@ public class PetitionsActivity extends ListActivity {
     protected ListView mPetitionsListView;
     protected TextView mEmptyTextView;
 
+    protected PrintsAPI mPrintsAPI;
+
     protected Petition[] mPetitions;
 
     @Override
@@ -52,10 +55,10 @@ public class PetitionsActivity extends ListActivity {
 
         //create PrintsAPI object to make requests to backend
         //new PrintsAPI(Context)
-        PrintsAPI printsAPI=new PrintsAPI(PetitionsActivity.this);
+        mPrintsAPI=new PrintsAPI(PetitionsActivity.this);
 
-        //get a request for petitions
-        Call petitionCall=printsAPI.getPetitions();
+        //get a call object for petitions
+        Call petitionCall=mPrintsAPI.getPetitions();
 
         //if call is not null, make a call to get the petitions
         if(petitionCall!=null){
@@ -77,8 +80,6 @@ public class PetitionsActivity extends ListActivity {
                             String petitionData=response.body().string();
                             JSONArray petitionJsonData=new JSONArray(petitionData);
 
-                            Log.v(TAG,petitionJsonData.toString());
-
                             setPetitionObjects(petitionJsonData);
 
                             runOnUiThread(new Runnable() {
@@ -94,8 +95,6 @@ public class PetitionsActivity extends ListActivity {
                                     mPetitionsListView.setAdapter(petitionsAdapter);
                                 }
                             });
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -107,10 +106,10 @@ public class PetitionsActivity extends ListActivity {
         }else{
             Toast.makeText(PetitionsActivity.this,"Request Broken",Toast.LENGTH_LONG).show();
         }
-    };//end getPetitions() function
+    };//end onCreate()
 
 
-
+    /* Takes json and creates list of Petition objects */
     protected void setPetitionObjects(JSONArray petitionJsonData) throws JSONException{
 
         //initialize mPetitions as array of objects that hold petition information
