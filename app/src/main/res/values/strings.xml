@@ -2,6 +2,17 @@
 <resources>
 
     <string name="app_name">Paw Prints</string>
-
     <string name="empty_petitions_text">There are no petitions</string>
+    <string name="title_activity_petition_detail">Petition Detail</string>
+
+
+    <string name="votes_label">Votes</string>
+    <string name="min_votes_label">Votes Needed</string>
+    <string name="votes_placeholder">--</string>
+    <string name="title_placeholder">Petition Title</string>
+    <string name="author_placeholder">Author</string>
+    <string name="description_placeholder">This petition is currently loading. . .</string>
+
+
+
 </resources>

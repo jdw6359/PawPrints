@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tiger_orange">#e0f36e21</color>
+    <color name="white">#ffffff</color>
+    <color name="half_transparent_white">#c0ffffff</color>
+    <color name="transparent_white">#80ffffff</color>
+</resources>

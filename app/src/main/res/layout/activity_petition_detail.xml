@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="woodward.joshua.pawprints.UI.PetitionDetail"
+    android:background="@color/tiger_orange">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_placeholder"
+        android:id="@+id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:textSize="32dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/author_placeholder"
+        android:id="@+id/authorTextView"
+        android:layout_below="@+id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:textColor="@color/half_transparent_white"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authorTextView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votes_label"
+                android:id="@+id/votesLabelTextView"
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/transparent_white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votes_placeholder"
+                android:id="@+id/votesTextView"
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/min_votes_label"
+                android:id="@+id/minVotesLabelTextView"
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/transparent_white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/votes_placeholder"
+                android:id="@+id/textView5"
+                android:gravity="center_horizontal"
+                android:textSize="16dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/description_placeholder"
+        android:id="@+id/descriptionTextView"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/half_transparent_white" />
+
+</RelativeLayout>

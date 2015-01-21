@@ -11,7 +11,15 @@ public class Petition {
     private long mSubmitted;
     private int mVotes;
     private int mMinimumVotes;
+    private String mId;
 
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
+    }
 
     public String getTitle() {
         return mTitle;

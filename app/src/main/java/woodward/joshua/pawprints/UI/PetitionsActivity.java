@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -106,6 +108,23 @@ public class PetitionsActivity extends ListActivity {
         }else{
             Toast.makeText(PetitionsActivity.this,"Request Broken",Toast.LENGTH_LONG).show();
         }
+
+        mPetitionsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String petitionId=mPetitions[i].getId();
+
+                //starts new activity, passing in petition id as reference
+                Intent petitionDetailIntent=new Intent(PetitionsActivity.this, PetitionDetail.class);
+                petitionDetailIntent.putExtra("PetitionId",petitionId);
+                startActivity(petitionDetailIntent);
+
+            }
+        });
+        //end on click listener for Petitions List View
+
+
     };//end onCreate()
 
 
@@ -120,6 +139,7 @@ public class PetitionsActivity extends ListActivity {
 
             Petition petition=new Petition();
 
+            String id=currentJSONPetition.getString("_id");
             String title=currentJSONPetition.getString("title");
             String description=currentJSONPetition.getString("description");
             String author=currentJSONPetition.getString("author");
@@ -127,6 +147,7 @@ public class PetitionsActivity extends ListActivity {
             int votes=currentJSONPetition.getInt("votes");
             int minimumVotes=currentJSONPetition.getInt("minimumVotes");
 
+            petition.setId(id);
             petition.setTitle(title);
             petition.setDescription(description);
             petition.setAuthor(author);
@@ -136,8 +157,8 @@ public class PetitionsActivity extends ListActivity {
 
             mPetitions[i]=petition;
         }
-
-        Log.v(TAG,"Length of mPetitions array: " + mPetitions.length);
     }
+
+
 
 }
