@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
@@ -17,6 +18,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import woodward.joshua.pawprints.Backend.Petition;
 import woodward.joshua.pawprints.Backend.PrintsAPI;
 import woodward.joshua.pawprints.R;
@@ -28,11 +31,18 @@ public class PetitionDetail extends Activity {
     private String mPetitionId;
     private Petition mPetition;
 
+    @InjectView(R.id.titleTextView) TextView mTitleTextView;
+    @InjectView(R.id.authorTextView) TextView mAuthorTextView;
+    @InjectView(R.id.votesTextView) TextView mVotesTextView;
+    @InjectView(R.id.minVotesTextView) TextView mMinVotesTextView;
+    @InjectView(R.id.descriptionTextView) TextView mDescriptionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_petition_detail);
+
+        ButterKnife.inject(this);
 
         //get the petition id of the petition we will be examining
         mPetitionId = getIntent().getExtras().getString("PetitionId");
@@ -69,7 +79,7 @@ public class PetitionDetail extends Activity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(PetitionDetail.this,"calling from ui thread",Toast.LENGTH_LONG).show();
+                                    updateDisplay();
                                 }
                             });
 
@@ -101,4 +111,17 @@ public class PetitionDetail extends Activity {
         mPetition.setDescription(petitionJSONObject.getString("description"));
 
     }
+
+    protected void updateDisplay(){
+        mTitleTextView.setText(mPetition.getTitle());
+        mAuthorTextView.setText(mPetition.getAuthor());
+        mDescriptionTextView.setText(mPetition.getDescription());
+
+        String votes=mPetition.getVotes()+"";
+        String minVotes=mPetition.getMinimumVotes()+"";
+
+        mVotesTextView.setText(votes);
+        mMinVotesTextView.setText(minVotes);
+    }
+
 }

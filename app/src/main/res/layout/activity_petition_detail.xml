@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/votes_placeholder"
-                android:id="@+id/textView5"
+                android:id="@+id/minVotesTextView"
                 android:gravity="center_horizontal"
                 android:textSize="16dp"
                 android:textColor="@color/white"/>
