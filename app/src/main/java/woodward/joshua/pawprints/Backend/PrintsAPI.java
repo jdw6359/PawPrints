@@ -68,4 +68,27 @@ public class PrintsAPI {
             return null;
         }
     }
+
+    public Call getPetitionDetail(String petitionId){
+
+        if(isNetworkAvailable()){
+
+            //create url for the getPetitionsDetail requist
+            //structure: /v1/petitions/{petitionId}?key={key}
+            String petitionDetailURL=mPawPrintsURL + "/v1/petitions/" + petitionId + "?key=" + mApiKey;
+
+            Log.d(TAG,"Petition Detail URL: " + petitionDetailURL);
+
+            //create Http client
+            OkHttpClient client=new OkHttpClient();
+            Request petitionDetailRequest=new Request.Builder().url(petitionDetailURL).build();
+
+            Call call=client.newCall(petitionDetailRequest);
+            return call;
+        }else{
+            return null;
+        }
+
+    }
+
 }
