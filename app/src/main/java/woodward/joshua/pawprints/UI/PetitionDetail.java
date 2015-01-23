@@ -3,8 +3,6 @@ package woodward.joshua.pawprints.UI;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +30,7 @@ public class PetitionDetail extends Activity {
     private Petition mPetition;
 
     @InjectView(R.id.titleTextView) TextView mTitleTextView;
-    @InjectView(R.id.authorTextView) TextView mAuthorTextView;
+    @InjectView(R.id.petitionAuthorTextView) TextView mAuthorTextView;
     @InjectView(R.id.votesTextView) TextView mVotesTextView;
     @InjectView(R.id.minVotesTextView) TextView mMinVotesTextView;
     @InjectView(R.id.descriptionTextView) TextView mDescriptionTextView;

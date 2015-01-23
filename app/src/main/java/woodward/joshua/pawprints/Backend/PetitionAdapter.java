@@ -40,7 +40,9 @@ public class PetitionAdapter extends ArrayAdapter<Petition> {
             convertView= LayoutInflater.from(mContext).inflate(R.layout.petition_item,null);
             holder=new ViewHolder();
             holder.petitionNameLabel=(TextView)convertView.findViewById(R.id.petitionNameTextView);
+            holder.petitionAuthorLabel=(TextView)convertView.findViewById(R.id.petitionAuthorTextView);
             holder.votesLabel=(TextView)convertView.findViewById(R.id.petitionVotesTextView);
+
             convertView.setTag(holder);
         }else{
             //it already exists, we just need to change the data
@@ -53,6 +55,9 @@ public class PetitionAdapter extends ArrayAdapter<Petition> {
         //set petitionNameLabel
         holder.petitionNameLabel.setText(petition.getTitle());
 
+        //set petitionAuthorLabel
+        holder.petitionAuthorLabel.setText(petition.getAuthor());
+
         //format string for votes label
         String votesText=petition.getVotes() + "/" + petition.getMinimumVotes();
         holder.votesLabel.setText(votesText);
@@ -63,6 +68,7 @@ public class PetitionAdapter extends ArrayAdapter<Petition> {
     //follows view holder pattern such that view holder object will hold the state
     private static class ViewHolder{
         TextView petitionNameLabel;
+        TextView petitionAuthorLabel;
         TextView votesLabel;
     }
 
