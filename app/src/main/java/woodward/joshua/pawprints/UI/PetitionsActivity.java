@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.List;
 
 import woodward.joshua.pawprints.Backend.Petition;
+import woodward.joshua.pawprints.Backend.PetitionAdapter;
 import woodward.joshua.pawprints.Backend.PrintsAPI;
 import woodward.joshua.pawprints.R;
 
@@ -40,7 +41,7 @@ public class PetitionsActivity extends ListActivity {
 
     protected PrintsAPI mPrintsAPI;
 
-    protected Petition[] mPetitions;
+    protected List<Petition> mPetitions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +89,21 @@ public class PetitionsActivity extends ListActivity {
                                 @Override
                                 public void run() {
 
-                                    String[] mPetitionNames=new String[mPetitions.length];
-                                    for(int i=0;i<mPetitions.length;i++){
-                                        mPetitionNames[i]=mPetitions[i].getTitle();
+                                    String[] mPetitionNames=new String[mPetitions.size()];
+                                    for(int i=0;i<mPetitions.size();i++){
+                                        mPetitionNames[i]=mPetitions.get(i).getTitle();
                                     }
+
+                                    if(getListView().getAdapter()==null){
+                                        PetitionAdapter recipientsAdapter =new PetitionAdapter(PetitionsActivity.this,mPetitions);
+                                        getListView().setAdapter(recipientsAdapter);
+                                    }else{
+                                        ((PetitionAdapter)getListView().getAdapter()).refill(mPetitions);
+                                    }
+
+
+
+
 
                                     ArrayAdapter<String> petitionsAdapter=new ArrayAdapter<String>(PetitionsActivity.this,android.R.layout.simple_list_item_1,mPetitionNames);
                                     mPetitionsListView.setAdapter(petitionsAdapter);
@@ -113,7 +125,7 @@ public class PetitionsActivity extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String petitionId=mPetitions[i].getId();
+                String petitionId=mPetitions.get(i).getId();
 
                 //starts new activity, passing in petition id as reference
                 Intent petitionDetailIntent=new Intent(PetitionsActivity.this, PetitionDetail.class);
@@ -132,7 +144,6 @@ public class PetitionsActivity extends ListActivity {
     protected void setPetitionObjects(JSONArray petitionJsonData) throws JSONException{
 
         //initialize mPetitions as array of objects that hold petition information
-        mPetitions=new Petition[petitionJsonData.length()];
 
         for(int i=0;i<petitionJsonData.length();i++){
             JSONObject currentJSONPetition=petitionJsonData.getJSONObject(i);
@@ -155,7 +166,7 @@ public class PetitionsActivity extends ListActivity {
             petition.setVotes(votes);
             petition.setMinimumVotes(minimumVotes);
 
-            mPetitions[i]=petition;
+            mPetitions.set(i,petition);
         }
     }
 
