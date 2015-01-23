@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import woodward.joshua.pawprints.Backend.Petition;
@@ -101,12 +102,6 @@ public class PetitionsActivity extends ListActivity {
                                         ((PetitionAdapter)getListView().getAdapter()).refill(mPetitions);
                                     }
 
-
-
-
-
-                                    ArrayAdapter<String> petitionsAdapter=new ArrayAdapter<String>(PetitionsActivity.this,android.R.layout.simple_list_item_1,mPetitionNames);
-                                    mPetitionsListView.setAdapter(petitionsAdapter);
                                 }
                             });
                         } catch (JSONException e) {
@@ -144,6 +139,7 @@ public class PetitionsActivity extends ListActivity {
     protected void setPetitionObjects(JSONArray petitionJsonData) throws JSONException{
 
         //initialize mPetitions as array of objects that hold petition information
+        mPetitions=new ArrayList<Petition>();
 
         for(int i=0;i<petitionJsonData.length();i++){
             JSONObject currentJSONPetition=petitionJsonData.getJSONObject(i);
@@ -166,7 +162,7 @@ public class PetitionsActivity extends ListActivity {
             petition.setVotes(votes);
             petition.setMinimumVotes(minimumVotes);
 
-            mPetitions.set(i,petition);
+            mPetitions.add(petition);
         }
     }
 
