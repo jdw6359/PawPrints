@@ -59,7 +59,7 @@ public class PetitionAdapter extends ArrayAdapter<Petition> {
         holder.petitionAuthorLabel.setText(petition.getAuthor());
 
         //format string for votes label
-        String votesText=petition.getVotes() + "/" + petition.getMinimumVotes();
+        String votesText=petition.getVotes() + "/" + petition.getMinimumVotes() + " votes";
         holder.votesLabel.setText(votesText);
 
         return convertView;
