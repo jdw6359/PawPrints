@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="15dp"
-              android:layout_marginRight="15dp"
-              android:layout_marginTop="10dp"
-              android:layout_marginBottom="10dp"
-              android:background="@android:color/holo_orange_dark">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Petition Title"
-            android:id="@+id/petitionNameTextView"
-            android:layout_alignParentLeft="true"
-
-            android:textSize="18sp"
-            android:layout_centerVertical="true"/>
-
+              android:background="@android:color/transparent">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Author"
-                android:id="@+id/petitionAuthorTextView"
-                android:layout_weight="1"
-                android:textSize="14sp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Votes Text"
-                android:id="@+id/petitionVotesTextView"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"/>
+                android:text="Petition Title"
+                android:id="@+id/petitionNameTextView"
+                android:layout_alignParentLeft="true"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"/>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Author"
+                    android:id="@+id/petitionAuthorTextView"
+                    android:layout_weight="1"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Votes Text"
+                    android:id="@+id/petitionVotesTextView"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
-
-
 
 
 </LinearLayout>

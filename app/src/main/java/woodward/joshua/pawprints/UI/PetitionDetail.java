@@ -42,6 +42,8 @@ public class PetitionDetail extends Activity {
 
         ButterKnife.inject(this);
 
+        getActionBar().hide();
+
         //get the petition id of the petition we will be examining
         mPetitionId = getIntent().getExtras().getString("PetitionId");
 

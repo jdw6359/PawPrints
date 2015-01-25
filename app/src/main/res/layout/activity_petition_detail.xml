@@ -91,15 +91,21 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/description_placeholder"
-        android:id="@+id/descriptionTextView"
+        android:id="@+id/descriptionScrollView"
         android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textSize="16dp"
-        android:textColor="@color/half_transparent_white" />
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/description_placeholder"
+            android:id="@+id/descriptionTextView"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/half_transparent_white" />
+    </ScrollView>
 
 </RelativeLayout>
